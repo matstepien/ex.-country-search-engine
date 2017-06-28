@@ -10,9 +10,15 @@ function searchCountries() {
 	$.ajax({
 		url: url + countryName,
 		method: 'GET',
-		success: showCountriesList
+		success: showCountriesList,
+		error: searchError
 	});
 }
+function searchError() {
+	countriesList.empty();
+	alert("Country not found!");
+}
+
 function showCountriesList(resp) {
 	countriesList.empty();
 	resp.forEach(function(item) {
